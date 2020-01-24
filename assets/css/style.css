@@ -1,6 +1,21 @@
+html {
+  background-color: rgb(155, 164, 175);
+  display: flex;
+  /* position: absolute; */
+  /* opacity: 50%; */
+}
+/* .background {
+  background-image: url(../images/rockywall.png);
+} */
+body {
+  width: fit-content;
+  margin: 5% 20%;
+}
 h1 {
   font-family: "Bungee Shade";
-  font-size: 
+  flex: auto;
+  align-self: auto;
+  max-height: fit-content;
 }
 
 h2 {
@@ -9,4 +24,27 @@ h2 {
 
 h6 {
   font-family: "creepster";
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: safe center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  border: 6px lightslategray;
+  border-style: outset;
+  padding: 8%;
+  height: -webkit-fill-available;
+  background-image: url(../images/rockywall.png);
+  filter: brightness(0.95);
+}
+
+button {
+  font-family: "Arbutus";
+  border: outset goldenrod;
+  background: rgb(236, 201, 2);
+  opacity: 85%;
 }
