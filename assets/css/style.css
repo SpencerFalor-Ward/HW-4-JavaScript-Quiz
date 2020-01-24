@@ -26,6 +26,7 @@ h6 {
   font-family: "creepster";
 }
 
+/* how to make it stay centered when on smaller screens */
 .container {
   display: flex;
   flex-direction: column;
@@ -40,6 +41,7 @@ h6 {
   height: -webkit-fill-available;
   background-image: url(../images/rockywall.png);
   filter: brightness(0.95);
+  position: relative;
 }
 
 button {
