@@ -70,6 +70,8 @@ var questionIndex = 0;
 
 var getQuestion = function(e) {
   $(".main").empty();
+  //create var title set to h1 containing class connected to currentquestion Title
+  //$(???)append (title)
   var currentQuestion = questions[questionIndex];
 
   $(".main").html(currentQuestion.title);
