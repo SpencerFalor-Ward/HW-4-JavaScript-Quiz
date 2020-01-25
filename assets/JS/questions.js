@@ -65,3 +65,48 @@ var questions = [
     answer: "parentheses"
   }
 ];
+
+var questionIndex = 0;
+
+var getQuestion = function(e) {
+  $(".main").empty();
+  var currentQuestion = questions[questionIndex];
+
+  $(".main").html(currentQuestion.title);
+  currentQuestion.choices.forEach(function(choice, i) {
+    var choiceNode = $("<button class='color'>");
+    choiceNode.attr("value", choice);
+    choiceNode.text(choice);
+    console.log(choice);
+    choiceNode.click(questionClick);
+    $(".main").append(choiceNode);
+  });
+};
+
+var questionClick = function(e) {
+  console.log("test");
+  if (this.value === questions[questionIndex].answer) {
+    alert("correct");
+  }
+  if (questionIndex === questions.length - 1) {
+    alert("gameover");
+    return;
+  }
+  questionIndex += 1;
+  getQuestion();
+  console.log(questionIndex);
+  console.log(questions.length);
+};
+
+$(".startBtn").click(function(e) {
+  //   $(".main").empty();
+  getQuestion();
+  //   console.log(e);
+  // // // function(e) {
+  // //     for (var i = 0; i < questions.length; i++);
+
+  // //     var questions = question[i];
+  console.log(e);
+  // }
+});
+// console.log(this);
