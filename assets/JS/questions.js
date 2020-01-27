@@ -73,16 +73,23 @@ var getQuestion = function(e) {
   //create var title set to h1 containing class connected to currentquestion Title
   //$(???)append (title)
   var currentQuestion = questions[questionIndex];
-
-  $(".main").html(currentQuestion.title);
+  // currentQuestion.title.each(function(title, i) {
+  var questionNode = $("<h2 class ='questionTitle'>");
+  $(".main").append(questionNode);
+  $(".questionTitle").append(currentQuestion.title);
+  // questionNode.attr("value", title);
+  // questionNode.text(title);
+  console.log(questionNode);
+  // });
   currentQuestion.choices.forEach(function(choice, i) {
-    var choiceNode = $("<button class='color'>");
+    var choiceNode = $("<button class='choiceButton'>");
     choiceNode.attr("value", choice);
     choiceNode.text(choice);
-    console.log(choice);
     choiceNode.click(questionClick);
     $(".main").append(choiceNode);
+    console.log(choice);
   });
+  $("button").after("<br>");
 };
 
 var questionClick = function(e) {

@@ -21,7 +21,13 @@ h1 {
 h2 {
   font-family: "Faster One";
 }
-
+.questionTitle{
+  font-family: 'Alegreya';
+  font-weight: bold;
+  padding-bottom: 5%;
+  margin-bottom: 1rem;
+  border-bottom: 1px black solid;
+}
 h6 {
   font-family: "creepster";
 }
@@ -49,4 +55,8 @@ button {
   border: outset goldenrod;
   background: rgb(236, 201, 2);
   opacity: 85%;
+}
+.choiceButton {
+  margin: 1%;
+  flex-direction:r
 }
