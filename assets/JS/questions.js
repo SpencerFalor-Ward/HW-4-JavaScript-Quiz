@@ -1,3 +1,5 @@
+
+// var to create questions array, contains 7 questions - index = 0 to 6
 var questions = [
   {
     title:
@@ -68,19 +70,24 @@ var questions = [
 
 var questionIndex = 0;
 
+// function that initiates post click of start button to start the game 
 var getQuestion = function(e) {
+ 
+//  empties content on main page to be replaced with quiz content
   $(".main").empty();
-  //create var title set to h1 containing class connected to currentquestion Title
-  //$(???)append (title)
+
+
+// var for current question that pulls from the index of the questions above 
   var currentQuestion = questions[questionIndex];
-  // currentQuestion.title.each(function(title, i) {
+
+  // creates new h2 that is filled with the question so that CSS can be applied
   var questionNode = $("<h2 class ='questionTitle'>");
   $(".main").append(questionNode);
   $(".questionTitle").append(currentQuestion.title);
-  // questionNode.attr("value", title);
-  // questionNode.text(title);
+
   console.log(questionNode);
-  // });
+
+  // Loops through the questions changing post click and applies class for CSS styling
   currentQuestion.choices.forEach(function(choice, i) {
     var choiceNode = $("<button class='choiceButton'>");
     choiceNode.attr("value", choice);
@@ -89,9 +96,19 @@ var getQuestion = function(e) {
     $(".main").append(choiceNode);
     console.log(choice);
   });
+
+  // adds <br> to buttons so they will stack
   $("button").after("<br>");
+
+  // adds timer to the page and class for CSS
+  $(".main").append("<div class = 'timer'>", "Time remaining: ");
+
+  var totalSeconds = 105;
+  var secondsElapsed = 0;
+  var interval;
 };
 
+// function for clicking question anser right or wrong
 var questionClick = function(e) {
   console.log("test");
   if (this.value === questions[questionIndex].answer) {
@@ -107,6 +124,7 @@ var questionClick = function(e) {
   console.log(questions.length);
 };
 
+// function to start game upon Start button click 
 $(".startBtn").click(function(e) {
   //   $(".main").empty();
   getQuestion();
