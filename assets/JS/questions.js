@@ -72,6 +72,7 @@ var questionIndex = 0;
 // function that initiates post click of start button to start the game
 var getQuestion = function() {
   //  empties content on main page to be replaced with quiz content
+
   $(".main").empty();
 
   // var for current question that pulls from the index of the questions above
@@ -96,7 +97,7 @@ var getQuestion = function() {
   $("button").after("<br>");
 
   // adds timer to the page and class for CSS
-  $(".main").append("<div class = 'timer'>");
+  $(".main").prepend("<div class = 'timer'>");
   $(".timer")
     .append("Time remaining:" + "")
     .append("<div class = 'minutes'> ")
@@ -157,11 +158,19 @@ function startTimer() {
   }, 1000);
 }
 
+function stopTimer() {
+  if (secondsElapsed >= totalSeconds) {
+    formattedMinutes = 0;
+    formattedSeconds = 0;
+  }
+  return;
+}
+
 // function for clicking question anser right or wrong
 var questionClick = function() {
   console.log("test");
   if (this.value === questions[questionIndex].answer) {
-    alert("correct");
+    // $(".main").css("background", "lightgreen");
   } else {
     secondsElapsed += 15;
   }
@@ -169,6 +178,7 @@ var questionClick = function() {
     alert(secondsElapsed);
     return;
   }
+
   questionIndex += 1;
   getQuestion();
   console.log(questionIndex);
@@ -178,10 +188,10 @@ var questionClick = function() {
 // function to start game upon Start button click
 $(".startBtn").click(function() {
   getQuestion();
-
   getFormattedMinutes();
   getFormattedSeconds();
   startTimer();
   renderTime();
-  console.log(e);
+  stopTimer();
+  // console.log(e);
 });
