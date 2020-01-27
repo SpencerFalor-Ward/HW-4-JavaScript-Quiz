@@ -58,5 +58,8 @@ button {
 }
 .choiceButton {
   margin: 1%;
-  flex-direction:r
+  
+}
+.timer {
+  display: inline-flex;
 }

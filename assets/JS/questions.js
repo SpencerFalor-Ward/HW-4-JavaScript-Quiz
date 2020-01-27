@@ -1,4 +1,3 @@
-
 // var to create questions array, contains 7 questions - index = 0 to 6
 var questions = [
   {
@@ -70,22 +69,18 @@ var questions = [
 
 var questionIndex = 0;
 
-// function that initiates post click of start button to start the game 
-var getQuestion = function(e) {
- 
-//  empties content on main page to be replaced with quiz content
+// function that initiates post click of start button to start the game
+var getQuestion = function() {
+  //  empties content on main page to be replaced with quiz content
   $(".main").empty();
 
-
-// var for current question that pulls from the index of the questions above 
+  // var for current question that pulls from the index of the questions above
   var currentQuestion = questions[questionIndex];
 
   // creates new h2 that is filled with the question so that CSS can be applied
   var questionNode = $("<h2 class ='questionTitle'>");
   $(".main").append(questionNode);
   $(".questionTitle").append(currentQuestion.title);
-
-  console.log(questionNode);
 
   // Loops through the questions changing post click and applies class for CSS styling
   currentQuestion.choices.forEach(function(choice, i) {
@@ -101,21 +96,77 @@ var getQuestion = function(e) {
   $("button").after("<br>");
 
   // adds timer to the page and class for CSS
-  $(".main").append("<div class = 'timer'>", "Time remaining: ");
-
-  var totalSeconds = 105;
-  var secondsElapsed = 0;
-  var interval;
+  $(".main").append("<div class = 'timer'>");
+  $(".timer")
+    .append("Time remaining:" + "")
+    .append("<div class = 'minutes'> ")
+    .append(":")
+    .append("<div class = 'seconds'>");
 };
 
+var secondsPerQuestion = 15;
+var totalSeconds = questions.length * secondsPerQuestion;
+var interval;
+var secondsElapsed = 0;
+
+console.log(totalSeconds);
+
+function getFormattedMinutes() {
+  var secondsLeft = totalSeconds - secondsElapsed;
+
+  var minutesLeft = Math.floor(secondsLeft / 60);
+
+  var formattedMinutes;
+
+  if (minutesLeft < 10) {
+    formattedMinutes = "0" + minutesLeft;
+  } else {
+    formattedMinutes = minutesLeft;
+  }
+
+  return formattedMinutes;
+}
+
+function getFormattedSeconds() {
+  var secondsLeft = (totalSeconds - secondsElapsed) % 60;
+
+  var formattedSeconds;
+
+  if (secondsLeft < 10) {
+    formattedSeconds = "0" + secondsLeft;
+  } else {
+    formattedSeconds = secondsLeft;
+  }
+
+  return formattedSeconds;
+}
+console.log(getFormattedSeconds);
+
+var renderTime = function() {
+  // minutesDisplay.textContent =
+  $(".minutes").text(getFormattedMinutes);
+  // secondsDisplay.textContent =
+  $(".seconds").text(getFormattedSeconds);
+  return;
+};
+
+function startTimer() {
+  interval = setInterval(function() {
+    secondsElapsed++;
+    renderTime();
+  }, 1000);
+}
+
 // function for clicking question anser right or wrong
-var questionClick = function(e) {
+var questionClick = function() {
   console.log("test");
   if (this.value === questions[questionIndex].answer) {
     alert("correct");
+  } else {
+    secondsElapsed += 15;
   }
   if (questionIndex === questions.length - 1) {
-    alert("gameover");
+    alert(secondsElapsed);
     return;
   }
   questionIndex += 1;
@@ -124,16 +175,13 @@ var questionClick = function(e) {
   console.log(questions.length);
 };
 
-// function to start game upon Start button click 
-$(".startBtn").click(function(e) {
-  //   $(".main").empty();
+// function to start game upon Start button click
+$(".startBtn").click(function() {
   getQuestion();
-  //   console.log(e);
-  // // // function(e) {
-  // //     for (var i = 0; i < questions.length; i++);
 
-  // //     var questions = question[i];
+  getFormattedMinutes();
+  getFormattedSeconds();
+  startTimer();
+  renderTime();
   console.log(e);
-  // }
 });
-// console.log(this);
