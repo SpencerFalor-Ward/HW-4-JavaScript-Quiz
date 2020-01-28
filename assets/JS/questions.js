@@ -173,29 +173,36 @@ var questionClick = function() {
         " seconds. Press OK if you would like to input your score"
     );
     stopTimer();
-
-    if (submitScore) {
+    // console.log(submitScore);
+    if ((submitScore = true)) {
       $(".main").empty();
-      $(".main").append("<h1 class = 'inputScore'> Write in your score");
+      $(".main").append("<h1 class = 'inputScore'> Write your score here");
       $(".main").append("<form>");
       $("form").append("<input type = 'text' name = 'score'>");
+      $(".main").append("<button class = 'submit'> Submit");
     } else {
       window.location = "index.html";
-    
     }
-    
+
     function stopTimer() {
       if (secondsElapsed >= totalSeconds) {
-        formattedMinutes = 0;
-        formattedSeconds = 0;
-            setTimeout (function(){
-            if (seconds === 0) {
-              ......
-            }
-            },1000)
+        // formattedMinutes = 0;
+        // formattedSeconds = 0;
+        setTimeout(function() {
+          if (seconds === 0) {
+            getFormattedMinutes == 0;
+            getFormattedSeconds == 0;
+          }
+        }, 1000);
       }
     }
+    return;
   }
+  $(".submit").click(function() {
+    score = $("input").text();
+    localStorage.setItem("score", socre);
+    console.log(this);
+  });
 
   questionIndex += 1;
   getQuestion();
