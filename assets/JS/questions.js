@@ -158,14 +158,6 @@ function startTimer() {
   }, 1000);
 }
 
-function stopTimer() {
-  if (secondsElapsed >= totalSeconds) {
-    formattedMinutes = 0;
-    formattedSeconds = 0;
-  }
-  return;
-}
-
 // function for clicking question anser right or wrong
 var questionClick = function() {
   console.log("test");
@@ -175,8 +167,24 @@ var questionClick = function() {
     secondsElapsed += 15;
   }
   if (questionIndex === questions.length - 1) {
-    alert(secondsElapsed);
+    confirm("Your score is " + secondsElapsed + " seconds");
+    stopTimer();
+
+    if (true) {
+      $(".main").empty();
+      $(".main").append("<h1 class = 'inputScore'> Write in your score");
+      $(".main").append("<form>");
+      $("form").append("<input type = 'text' name = 'score'>");
+    }
     return;
+
+    function stopTimer() {
+      if (secondsElapsed >= totalSeconds) {
+        formattedMinutes = 0;
+        formattedSeconds = 0;
+      }
+      return;
+    }
   }
 
   questionIndex += 1;
@@ -193,5 +201,5 @@ $(".startBtn").click(function() {
   startTimer();
   renderTime();
   stopTimer();
-  // console.log(e);
+  console.log(e);
 });
