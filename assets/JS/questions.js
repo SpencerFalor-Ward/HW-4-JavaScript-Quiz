@@ -167,23 +167,33 @@ var questionClick = function() {
     secondsElapsed += 15;
   }
   if (questionIndex === questions.length - 1) {
-    confirm("Your score is " + secondsElapsed + " seconds");
+    var submitScore = confirm(
+      "Your score is " +
+        secondsElapsed +
+        " seconds. Press OK if you would like to input your score"
+    );
     stopTimer();
 
-    if (true) {
+    if (submitScore) {
       $(".main").empty();
       $(".main").append("<h1 class = 'inputScore'> Write in your score");
       $(".main").append("<form>");
       $("form").append("<input type = 'text' name = 'score'>");
+    } else {
+      window.location = "index.html";
+    
     }
-    return;
-
+    
     function stopTimer() {
       if (secondsElapsed >= totalSeconds) {
         formattedMinutes = 0;
         formattedSeconds = 0;
+            setTimeout (function(){
+            if (seconds === 0) {
+              ......
+            }
+            },1000)
       }
-      return;
     }
   }
 
