@@ -68,6 +68,33 @@ var questions = [
 ];
 
 var questionIndex = 0;
+var hoverOut = function() {
+  $(this).css("opacity", 0.5);
+};
+
+var hoverIn = function() {
+  $(this).css("opacity", 1);
+};
+
+function goToRules() {
+  $(".beginBtn").hover(hoverOut, hoverIn);
+
+  $(".beginBtn").click(function() {
+    $(".main").empty();
+    var rulesTitle = $("<h2 class ='rules'>");
+    var rulesText = $("<p class = 'rulesText'>");
+    var startBtn = $("<button type = 'button' class = 'startBtn'>");
+    $(".main").append(rulesTitle, rulesText, startBtn);
+    $(".rules").text("RULES");
+    $(".rulesText").text(
+      "The quiz will be 7 questuions with 15 seconds to answer each.When you press START the timer will begin.A correct answer proceeds, a wrong answer proceeds with a penalty of 15 seconds subtracted from your time.The object of the game is to finish with the least amount of time elpased.The game ends when all questions are answered or the timer reaches Zero."
+    );
+    $(".startBtn").text("START");
+
+    $(".startBtn").hover(hoverOut, hoverIn);
+  });
+}
+goToRules();
 
 // function that initiates post click of start button to start the game
 var getQuestion = function() {
@@ -90,6 +117,7 @@ var getQuestion = function() {
     choiceNode.text(choice);
     choiceNode.click(questionClick);
     $(".main").append(choiceNode);
+    $(".choiceButton").hover(hoverOut, hoverIn);
     console.log(choice);
   });
 
@@ -148,23 +176,40 @@ var renderTime = function() {
   $(".minutes").text(getFormattedMinutes);
   // secondsDisplay.textContent =
   $(".seconds").text(getFormattedSeconds);
-  return;
+
+  stopTimer();
 };
 
-function startTimer() {
+var startTimer = function() {
   interval = setInterval(function() {
     secondsElapsed++;
     renderTime();
   }, 1000);
-}
+};
+
+var stopTimer = function() {
+  if (secondsElapsed >= totalSeconds) {
+    clearInterval(interval);
+    renderTime();
+  } else if (seconds === 0) {
+    getFormattedMinutes == 0;
+    getFormattedSeconds == 0;
+  }
+  renderTime();
+};
 
 // function for clicking question anser right or wrong
 var questionClick = function() {
   console.log("test");
   if (this.value === questions[questionIndex].answer) {
-    // $(".main").css("background", "lightgreen");
+    // $(".main")
+    //     //   .append("<div class ='correct'>")
+    //     //   .text("128535 Correct! 128535");
   } else {
     secondsElapsed += 15;
+    // $(".main")
+    //     //   .append("<div class ='wrong'>")
+    //     //   .text(" '&#x1F432' Wrong! '&#x1F432' ");
   }
   if (questionIndex === questions.length - 1) {
     var submitScore = confirm(
@@ -172,7 +217,7 @@ var questionClick = function() {
         secondsElapsed +
         " seconds. Press OK if you would like to input your score"
     );
-    stopTimer();
+    // stopTimer();
     // console.log(submitScore);
     if ((submitScore = true)) {
       $(".main").empty();
@@ -180,27 +225,16 @@ var questionClick = function() {
       $(".main").append("<form>");
       $("form").append("<input type = 'text' name = 'score'>");
       $(".main").append("<button class = 'submit'> Submit");
+      $(".submit").hover(hoverOut, hoverIn);
     } else {
       window.location = "index.html";
     }
-
-    function stopTimer() {
-      if (secondsElapsed >= totalSeconds) {
-        // formattedMinutes = 0;
-        // formattedSeconds = 0;
-        setTimeout(function() {
-          if (seconds === 0) {
-            getFormattedMinutes == 0;
-            getFormattedSeconds == 0;
-          }
-        }, 1000);
-      }
-    }
-    return;
   }
   $(".submit").click(function() {
-    score = $("input").text();
-    localStorage.setItem("score", socre);
+    $(".main").empty();
+    $(".main").append("<div class= 'score'");
+    var score = $("input").text();
+    localStorage.setItem("score", score);
     console.log(this);
   });
 

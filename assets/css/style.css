@@ -56,11 +56,16 @@ button {
   background: rgb(236, 201, 2);
   opacity: 85%;
 }
+
+.rulesText{
+font-family: "Alegreya";
+}
 .choiceButton {
   margin: 1%;
 }
 .timer {
   display: inline-flex;
+  font-family: "Faster One";
 }
 .inputScore {
   font-family: "Bungee Shade";
