@@ -57,8 +57,8 @@ button {
   opacity: 85%;
 }
 
-.rulesText{
-font-family: "Alegreya";
+.rulesText {
+  font-family: "Alegreya";
 }
 .choiceButton {
   margin: 1%;
@@ -73,4 +73,7 @@ font-family: "Alegreya";
 
 .submit {
   margin: 2%;
+}
+.score {
+  font-family: "creepster";
 }
