@@ -92,6 +92,7 @@ function goToRules() {
     $(".startBtn").text("START");
 
     $(".startBtn").hover(hoverOut, hoverIn);
+    startGame();
   });
 }
 goToRules();
@@ -191,7 +192,7 @@ var stopTimer = function() {
   if (secondsElapsed >= totalSeconds) {
     clearInterval(interval);
     renderTime();
-  } else if (seconds === 0) {
+  } else if (secondsElapsed === 0) {
     getFormattedMinutes == 0;
     getFormattedSeconds == 0;
   }
@@ -219,7 +220,7 @@ var questionClick = function() {
     );
     // stopTimer();
     // console.log(submitScore);
-    if ((submitScore = true)) {
+    if (submitScore === true) {
       $(".main").empty();
       $(".main").append("<h1 class = 'inputScore'> Write your score here");
       $(".main").append("<form>");
@@ -229,14 +230,16 @@ var questionClick = function() {
     } else {
       window.location = "index.html";
     }
+    $(".submit").click(function() {
+      var score = $("input").val();
+      $(".main").empty();
+      $(".main").append(`<div class= 'score'> Your Score: ${score}<div>`);
+      localStorage.setItem("score", score);
+      console.log(this);
+    });
+    // takes us out of this function and prevents the get question from reoccuring
+    return;
   }
-  $(".submit").click(function() {
-    $(".main").empty();
-    $(".main").append("<div class= 'score'");
-    var score = $("input").text();
-    localStorage.setItem("score", score);
-    console.log(this);
-  });
 
   questionIndex += 1;
   getQuestion();
@@ -245,12 +248,14 @@ var questionClick = function() {
 };
 
 // function to start game upon Start button click
-$(".startBtn").click(function() {
-  getQuestion();
-  getFormattedMinutes();
-  getFormattedSeconds();
-  startTimer();
-  renderTime();
-  stopTimer();
-  console.log(e);
-});
+function startGame() {
+  $(".startBtn").click(function() {
+    getQuestion();
+    getFormattedMinutes();
+    getFormattedSeconds();
+    startTimer();
+    renderTime();
+    stopTimer();
+    console.log(e);
+  });
+}
