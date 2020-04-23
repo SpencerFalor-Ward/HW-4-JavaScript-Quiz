@@ -1,4 +1,4 @@
-# HW-4-JavaScript-Quiz - this project is unfinished :grimacing:
+# HW-4-JavaScript-Quiz
 ## Goal for the project
 My goal for this project is to practice using JavaScript and jQuery to continue my journey towards **learning a true programing language** - *MATHS meets Language* 
 
