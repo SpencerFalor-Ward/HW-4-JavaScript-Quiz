@@ -1,4 +1,10 @@
-# HW-4-JavaScript-Quiz
+# :grey_question: [Welcome to SpencerFalor-Ward's JavaScript Quiz(https://spencerfalor-ward.github.io/HW-4-JavaScript-Quiz/) :grey_question:
+
+[![Followers](https://img.shields.io/github/followers/SpencerFalor-Ward?style=social)](https://github.com/SpencerFalor-Ward?tab=followers) 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+[![Language](https://img.shields.io/github/languages/top/SpencerFalor-Ward/HW-4-JavaScript-Quiz)](https://github.com/SpencerFalor-Ward/HW-4-JavaScript-Quiz/search?l=javascript) 
+[![Latest Commit](https://img.shields.io/github/last-commit/SpencerFalor-Ward/HW-4-JavaScript-Quiz)](https://github.com/SpencerFalor-Ward/HW-4-JavaScript-Quiz/graphs/commit-activity)
+
 ## Goal for the project
 My goal for this project is to practice using JavaScript and jQuery to continue my journey towards **learning a true programing language** - *MATHS meets Language* 
 
